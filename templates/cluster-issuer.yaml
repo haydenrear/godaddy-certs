@@ -7,7 +7,7 @@ spec:
     # ACME Server
     server: {{ .Values.acmeProps.server }}
     # ACME Email address
-    email: hayden.rear@gmail.com
+    email: {{ .Values.acmeProps.email }}
     privateKeySecretRef:
       name: letsencrypt-{{ .Values.acmeProps.environment }} # staging or production
     solvers:
