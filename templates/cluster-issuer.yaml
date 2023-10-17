@@ -1,0 +1,28 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-{{ .Values.acmeProps.environment }}
+spec:
+  acme:
+    # ACME Server
+    server: {{ .Values.acmeProps.server }}
+    # ACME Email address
+    email: hayden.rear@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-{{ .Values.acmeProps.environment }} # staging or production
+    solvers:
+      - selector:
+          dnsNames:
+            {{- range $h := .Values.certificates.hosts }}
+              - {{ $h | quote }}
+            {{ end }}
+        dns01:
+          webhook:
+            config:
+              apiKeySecretRef:
+                name: godaddy-api-key
+                key: token
+              production: true
+              ttl: 600
+            groupName: acme.mycompany.com
+            solverName: godaddy

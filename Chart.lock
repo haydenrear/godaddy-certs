@@ -1,0 +1,9 @@
+dependencies:
+- name: godaddy-webhook
+  repository: https://snowdrop.github.io/godaddy-webhook
+  version: 0.2.0
+- name: cert-manager
+  repository: https://charts.jetstack.io
+  version: v1.13.1
+digest: sha256:2be2002c223fafbd8438cc9e5e4ed08a9dc97fb08aa57734702d72b13850af5c
+generated: "2023-10-17T15:17:56.266659227-04:00"
